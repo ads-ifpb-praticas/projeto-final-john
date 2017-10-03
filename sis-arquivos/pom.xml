@@ -4,7 +4,7 @@
 
     <groupId>ifpb.ads</groupId>
     <artifactId>sis-arquivos</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.0${build.number}</version>
     <packaging>war</packaging>
 
     <name>sis-arquivos</name>
