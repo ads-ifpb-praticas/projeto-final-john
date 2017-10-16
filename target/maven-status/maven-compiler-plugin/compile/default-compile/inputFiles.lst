@@ -1,3 +1,8 @@
-/home/john/Documents/projeto-final-john/sis-arquivos/src/main/java/ifpb/ads/sis/arquivos/daos/Dao.java
-/home/john/Documents/projeto-final-john/sis-arquivos/src/main/java/ifpb/ads/sis/arquivos/beans/File.java
-/home/john/Documents/projeto-final-john/sis-arquivos/src/main/java/ifpb/ads/sis/arquivos/beans/User.java
+/home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/daos/Conexao.java
+/home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/beans/User.java
+/home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/beans/File.java
+/home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/beans/SolicitacaoDocumento.java
+/home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/daos/SolicitacaoDao.java
+/home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/daos/UserDao.java
+/home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/daos/FileDao.java
+/home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/daos/Dao.java

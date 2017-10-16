@@ -1,3 +1,8 @@
-ifpb/ads/sis/arquivos/daos/Dao.class
+ifpb/ads/sis/arquivos/daos/SolicitacaoDao.class
+ifpb/ads/sis/arquivos/daos/FileDao.class
 ifpb/ads/sis/arquivos/beans/File.class
 ifpb/ads/sis/arquivos/beans/User.class
+ifpb/ads/sis/arquivos/daos/Conexao.class
+ifpb/ads/sis/arquivos/daos/Dao.class
+ifpb/ads/sis/arquivos/daos/UserDao.class
+ifpb/ads/sis/arquivos/beans/SolicitacaoDocumento.class

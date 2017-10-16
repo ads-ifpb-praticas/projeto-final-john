@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:decorate template="/layout.xhtml">
+        <ui:define name="contexto">
+            <section>
+                    <div class="split style1">
+                        <h:form>
+                            <section>
+                                <h:inputText value="#{arquivo.nome}"/>
+                                <h:inputFile value="#{arquivo.caminho}"/>
+                                <h:commandButton class="btn btn-default" value="Atulizar" action="#{logController.login()}"/>
+                            </section>
+                        </h:form>
+                    </div>
+                </section>
+
+        </ui:define>
+    </ui:decorate>
+</html>
+
