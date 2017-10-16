@@ -19,6 +19,15 @@ public class File implements Serializable {
     private String nome;
     private String Tipo;
     private double tamanho;
+    private User dono;
+
+    public User getDono() {
+        return dono;
+    }
+
+    public void setDono(User dono) {
+        this.dono = dono;
+    }
 
     public int getId() {
         return id;

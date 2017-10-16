@@ -5,16 +5,20 @@
  */
 package ifpb.ads.sis.arquivos.daos;
 
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  *
  * @author john
+ * @param <T>
  */
 public interface Dao <T>{
     
-    void add(T obj);
-    void remove (T obj);
-    void update (T obj);
-    void list();
-    void get(String key);
+    void add(T obj) throws SQLException;
+    void remove (T obj)throws SQLException;
+    void update (T obj)throws SQLException;
+    List<T> list()throws SQLException;
+    T get(String key)throws SQLException;
     
 }
