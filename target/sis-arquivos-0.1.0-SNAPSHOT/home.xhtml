@@ -11,44 +11,35 @@
                     <h:message for="loginSuccessful" id="loginSuccessful"/>
                     <section>
                         <h1> <h:outputLabel value="usuario"></h:outputLabel></h1>
-                        <h:outputLabel value="mais dados do usuario"></h:outputLabel>
-                        <h:outputLabel value="mais dados do usuario"></h:outputLabel>
-                        <h:outputLabel value="mais dados do usuario"></h:outputLabel>
+                        <h:outputLabel value="Email"></h:outputLabel>
 
                     </section>
                     <section>
-
-                        <h:outputLabel value="mais dados do usuario"></h:outputLabel>
-                        <h:outputLabel value="mais dados do usuario"></h:outputLabel>
-                        <h:outputLabel value="mais dados do usuario"></h:outputLabel>
-
+                        <h:form>
+                            <h:inputText value="Nome"></h:inputText>
+                            <h:inputSecret value="Senha"></h:inputSecret>
+                            <h:inputSecret value="Confirma senha"></h:inputSecret>
+                            <h:commandButton class="btn btn-default" value="Login" action="#{logController.login()}"></h:commandButton>
+                        </h:form>
                     </section>
 
                 </div>
             </section>
             <br/>
             <br/>
+            
+            <h2>Adicione um Documento</h2>
             <h:form>
-                <h2>Altere seu dados logo a baixo</h2>
                 <section>
                     <div class="split style1">
                         <section>
-                            <h:inputText value=""  pt:placeholder="seu nome"></h:inputText>
-                            <h:inputText value=""  pt:placeholder="seu nome"></h:inputText>
-                            <h:inputText value=""  pt:placeholder="seu nome"></h:inputText>
-                        </section>
-                        <section>
-                            <h:inputText value=""  pt:placeholder="seu nome"></h:inputText>
-                            <h:inputText value=""  pt:placeholder="seu nome"></h:inputText>
-                            <div class="action">
-                                <a href="" class="button submit">Submeter</a>
-                            </div>
-
+                            <h:inputText value=""  pt:placeholder="Nome do Arquivo"></h:inputText>
+                            <h:inputFile value="arquivo" ></h:inputFile>
+                            <h:commandButton class="btn btn-default" value="Salvar" action="#{logController.login()}"/>
                         </section>
                     </div>
                 </section>
             </h:form>
-
         </ui:define>
     </ui:decorate>
 </html>

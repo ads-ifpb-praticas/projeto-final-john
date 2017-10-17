@@ -5,6 +5,7 @@
  */
 package ifpb.ads.sis.arquivos.daos;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * @author john
  * @param <T>
  */
-public interface Dao <T>{
+public interface Dao <T> extends Serializable{
     
     void add(T obj) throws SQLException;
     void remove (T obj)throws SQLException;

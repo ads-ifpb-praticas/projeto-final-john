@@ -7,17 +7,16 @@
     <ui:decorate template="/layout.xhtml">
         <ui:define name="contexto">
             <section>
-                    <div class="split style1">
-                        <h:form>
-                            <section>
-                                <h:inputText value="#{arquivo.nome}"/>
-                                <h:inputFile value="#{arquivo.caminho}"/>
-                                <h:commandButton class="btn btn-default" value="Atulizar" action="#{logController.login()}"/>
-                            </section>
-                        </h:form>
-                    </div>
-                </section>
-
+                <div class="split style1">
+                    <h:form>
+                        <section>
+                            <h:inputText value="#{arquivo.nome}"/>
+                            <h:inputFile value="#{arquivo.caminho}"/>
+                            <h:commandButton class="btn btn-default" value="Atulizar" action="#{logController.login()}"/>
+                        </section>
+                    </h:form>
+                </div>
+            </section>
         </ui:define>
     </ui:decorate>
 </html>
