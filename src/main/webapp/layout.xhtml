@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
     <h:head>
@@ -33,7 +34,11 @@
                                     </header>
                                     <ul>
 
-                                            <li><a href="./../java/ifpb/ads/sisplace/frontcontrole/FrontControler?command=Logar">Homepage</a></li>
+                                            <li>
+                                                <h:link value="Home " outcome="home" >
+                                                        <f:param name="username" value="mkyong" />
+                                                </h:link>
+                                            </li>
                                             <li><a href="generic.html">Criar Lugares/Eventos</a></li>
                                             <li><a href="elements.html">Buscar Lugares/Eventos</a></li>
                                             <li><a href="#">Pesenças confimadas</a></li>
