@@ -27,26 +27,26 @@ public class SolicitacaoControle implements Serializable{
     @Inject
     private SolicitacaoDocumento soliDocumento;
     
-    public void add(SolicitacaoDocumento soliDocumento) throws SQLException{
-        dao.add(soliDocumento);
-    }
-    
-    public void remove(SolicitacaoDocumento soliDocumento) throws SQLException{
-        dao.remove(soliDocumento);
-    }
-    
-    public void update(SolicitacaoDocumento soliDocumento) throws SQLException{
-        dao.update(soliDocumento);
-    }
-    
-    public SolicitacaoDocumento get(SolicitacaoDocumento soliDocumento) throws SQLException{
-        Integer identificador = soliDocumento.getId();
-        return dao.get(identificador.toString());
-    }
-    
-    public List<SolicitacaoDocumento> list() throws SQLException{
-        return dao.list();
-    }
+//    public void add(SolicitacaoDocumento soliDocumento) throws SQLException{
+//        dao.add(soliDocumento);
+//    }
+//    
+//    public void remove(SolicitacaoDocumento soliDocumento) throws SQLException{
+//        dao.remove(soliDocumento);
+//    }
+//    
+//    public void update(SolicitacaoDocumento soliDocumento) throws SQLException{
+//        dao.update(soliDocumento);
+//    }
+//    
+//    public SolicitacaoDocumento get(SolicitacaoDocumento soliDocumento) throws SQLException{
+//        Integer identificador = soliDocumento.getId();
+//        return dao.get(identificador.toString());
+//    }
+//    
+//    public List<SolicitacaoDocumento> list() throws SQLException{
+//        return dao.list();
+//    }
 
     public ISolicitacaoDao getDao() {
         return dao;
@@ -62,6 +62,10 @@ public class SolicitacaoControle implements Serializable{
 
     public void setSoliDocumento(SolicitacaoDocumento soliDocumento) {
         this.soliDocumento = soliDocumento;
+    }
+    
+    public String enviarSolicitacao(String remetente, String destinatario, int id){
+        
     }
     
 }

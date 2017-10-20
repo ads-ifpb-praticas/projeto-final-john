@@ -7,8 +7,11 @@ package ifpb.ads.sis.arquivos.controles;
 
 import ifpb.ads.sis.arquivos.beans.Documento;
 import ifpb.ads.sis.arquivos.daos.IFileDao;
+import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.Serializable;
+import java.nio.file.Files;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,6 +19,7 @@ import java.util.logging.Logger;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 /**
@@ -67,13 +71,28 @@ public class FileControle implements Serializable{
     public void setArquivo(List<Documento> arquivo) {
         this.arquivo = arquivo;
     }
+    
+    public void downloadArquivo(int id, String nome, String dono){
+        File arquivo = new File("/Users/rponte/minha-foto.png");
+        
+        int tamanho = (int) arquivo.length();
+
+        //response.setContentType("image/png"); // tipo do conteúdo
+        //response.setContentLength(tamanho);  // opcional
+        //response.setHeader("Content-Disposition", "attachment; filename=\"" + nome + "\"");
+
+        //OutputStream output = response.getOutputStream();
+        //Files.copy(path, output);
+    }
 
     public String salvarArquivo(Part part){
         try {
-            GerenciadorArquivos.montarArquivo(part);
-        } catch (IOException ex) {
+            Documento doc = GerenciadorArquivos.montarArquivo(part);
+            this.dao.add(doc);
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(FileControle.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "home?faces-redirect=true";
     }
+    
 }

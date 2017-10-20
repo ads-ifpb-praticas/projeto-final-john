@@ -31,6 +31,8 @@ public class UsuarioControle implements Serializable{
     @Inject
     private User user;
     
+    public static final Logger logger = Logger.getLogger(UsuarioControle.class);
+    
     public void add(User user) throws SQLException{
         dao.add(user);
     }
@@ -68,16 +70,20 @@ public class UsuarioControle implements Serializable{
     }
     
     public String logar(String log, String senha){
+        logger.info("iniciando login do usuario");
         try {
             this.user = dao.get(log);
+            logger.info("log feito com susseso");
             return "home?faces-redirect=true";
         } catch (SQLException ex) {
+            logger.info("erro ao logar usuario");
             Logger.getLogger(UsuarioControle.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "index?faces-redirect=true";
     }
     
     public String cadastrar(String log, String email, String senha){
+        logger.info("iniciando cadastro do usuario");
         if(log==null || email==null || senha==null)return "cadastro?faces-redirect=true";
         else{
             try {
@@ -90,17 +96,21 @@ public class UsuarioControle implements Serializable{
                     novoUsuario.setPassWord(senha);
                     this.dao.add(novoUsuario);
                     this.setUser(novoUsuario);
+                    logger.info("cadastro feito com susseso");
                     return "home?faces-redirect=true";
                     
                 }
             } catch (ClassNotFoundException | SQLException ex) {
+                logger.info("erro ao inicia cadastro");
                 Logger.getLogger(UsuarioControle.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        logger.info("erro ao inicia cadastro");
         return "cadastro?faces-redirect=true";
     }
     
     public String atulizar(String email, String senha){
+        logger.info("atulizando usuario");
         this.user.setEmail(email);
         this.user.setPassWord(senha);
         try {
@@ -108,12 +118,12 @@ public class UsuarioControle implements Serializable{
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioControle.class.getName()).log(Level.SEVERE, null, ex);
         }
+        logger.info("atualizacao efetuada com susseso");
         return "home?faces-redirect=true";
     }
     
     public String criaCadastro(){
         return "cadastro?faces-redirect=true";
     }
-    
-    
+
 }

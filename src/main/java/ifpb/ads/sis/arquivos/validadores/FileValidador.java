@@ -7,7 +7,6 @@ package ifpb.ads.sis.arquivos.validadores;
 
 import ifpb.ads.sis.arquivos.beans.Documento;
 import ifpb.ads.sis.arquivos.beans.User;
-import ifpb.ads.sis.arquivos.daos.Dao;
 import ifpb.ads.sis.arquivos.daos.FileDao;
 import ifpb.ads.sis.arquivos.daos.IFileDao;
 import java.sql.SQLException;
