@@ -1,0 +1,25 @@
+﻿create table usuario(
+	log varchar(30),
+	email varchar(30) not null,
+	senha varchar(30) not null,
+	primary key(log)
+	);
+create table arquivo(
+	id serial,
+	nome varchar(30),
+	documento varchar(30),
+	dono varchar(30),
+	tipo varchar(5),
+	tamanho double precision,
+	primary key(id),
+	foreign key(dono) references usuario(log)
+);
+create table requisicao(
+	id serial,
+	remetente varchar(30),
+	destinatario varchar(30),
+	documento varchar(30),
+	primary key (id),
+	foreign key (remetente) references usuario(log),
+	foreign key (destinatario) references usuario(log)
+);

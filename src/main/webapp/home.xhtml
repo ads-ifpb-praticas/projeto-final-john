@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:decorate template="/layout.xhtml">
+        <ui:define name="contexto">
+            <section>
+                <div class="split style1">
+                    <article>
+                        
+                        <header id="header">
+                            <h1> <h:outputLabel value="#{usuarioControler.user.log}"></h:outputLabel></h1>
+                            <h2> <h:outputLabel value="#{usuarioControler.user.email}"></h:outputLabel></h2>
+                        </header>
+                        <br/>
+                        <br/>
+                        <h:form>
+                            <h:inputText binding="#{email}" pt:placeholder="email"></h:inputText>
+                            <h:inputSecret binding="#{senha}" pt:placeholder="senha" ></h:inputSecret>
+                            <h:commandButton class="btn btn-default" value="Atulizar" action="#{usuarioControler.atulizar(email.value, senha.value)}"></h:commandButton>
+                        </h:form>
+
+                    </article>
+                </div>
+            </section>
+            <br/>
+            <br/>
+            <header id="header">
+                <h2>Adicione um Documento</h2>
+            </header>
+            <h:form enctype="multipart/form-data">
+                <section>
+                    <div class="split style1">
+                        <section>
+                            <h:inputFile id="arquivo" value="#{fileControle.part}" required="true" label="arquivo" ></h:inputFile>
+                            <h:commandButton class="btn btn-default" value="Salvar" action="#{fileControle.salvarArquivo()}"/>
+                        </section>
+                    </div>
+                </section>
+            </h:form>
+        </ui:define>
+    </ui:decorate>
+</html>
+
+

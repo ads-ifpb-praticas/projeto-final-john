@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:decorate template="/layout.xhtml">
+        <ui:define name="contexto">
+            
+            <h2>Arquivos</h2>
+            <div class="posts">
+                <ui:repeat var="arquivo" value="#{fileControle.meusDocumentos}">
+                    <article>
+                        <div class="split style1">
+                            <h:form>
+                                <section>
+                                    <h:outputLabel value="#{arquivo.nome}"/>
+                                    <h:outputLabel value="#{arquivo.tamanho}"/>
+                                    <h:outputLabel value="#{arquivo.tipo}"/>
+                                    <h:inputText value="#{user.nome}"/>
+                                    <h:commandButton class="btn btn-default" value="Download" action="#{fileControle.downloadArquivo(arquivo.id, arquivo.nome, arquivo.dono)}"/>
+                                </section>
+                            </h:form>
+                        </div>
+                    </article>
+                </ui:repeat>
+            </div>
+
+        </ui:define>
+    </ui:decorate>
+</html>
