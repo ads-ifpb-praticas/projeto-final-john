@@ -1,3 +1,4 @@
+ifpb/ads/sis/arquivos/validadores/UsuarioValidador.class
 ifpb/ads/sis/arquivos/validadores/FileValidador.class
 ifpb/ads/sis/arquivos/daos/SolicitacaoDao.class
 ifpb/ads/sis/arquivos/daos/FileDao.class
@@ -10,8 +11,8 @@ ifpb/ads/sis/arquivos/daos/ISolicitacaoDao.class
 ifpb/ads/sis/arquivos/controles/GerenciadorArquivos.class
 ifpb/ads/sis/arquivos/beans/SolicitacaoDocumento.class
 ifpb/ads/sis/arquivos/daos/IFileDao.class
-ifpb/ads/sis/arquivos/validadores/Usuariovalidador.class
 ifpb/ads/sis/arquivos/controles/FileControle.class
 ifpb/ads/sis/arquivos/daos/Dao.class
 ifpb/ads/sis/arquivos/controles/UsuarioControler.class
 ifpb/ads/sis/arquivos/daos/UserDao.class
+.netbeans_automatic_build

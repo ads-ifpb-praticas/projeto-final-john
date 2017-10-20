@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
       >
 
     <h:head>
@@ -45,11 +45,8 @@
                                     </header>
                                     <ul>
                                         <h:form>
-                                            <li>
-                                                
-                                            </li>
-                                            <li><a href="generic.html">Criar Lugares/Eventos</a></li>
-                                            <li><a href="elements.html">Buscar Lugares/Eventos</a></li>
+                                            <li><h:link value="Home" outcome="home"></h:link> </li>
+                                            <li><h:link value="Meus Arquivos" outcome="meusarquivos"></h:link></li>
                                             <li><a href="#">Pesenças confimadas</a></li>
                                             <li><a href="#">Meus Lugares/Eventos</a></li>
                                             <li><a href="#">Amigos</a></li>

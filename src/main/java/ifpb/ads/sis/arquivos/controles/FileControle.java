@@ -9,9 +9,8 @@ import ifpb.ads.sis.arquivos.beans.Documento;
 import ifpb.ads.sis.arquivos.daos.IFileDao;
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.InputStream;
 import java.io.Serializable;
-import java.nio.file.Files;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -34,6 +33,21 @@ public class FileControle implements Serializable{
     private IFileDao dao;
     @Inject
     private Documento arquivo;
+    private Part part;
+    private List<Documento> meusDocumentos;
+    private List<Documento> documentos;
+    
+
+    private static final Logger logger = Logger.getLogger("FileControler");
+    
+    public Part getPart() {
+        return part;
+    }
+
+    public void setPart(Part part) {
+        this.part = part;
+    }
+    
     
 //    public void add(Documento arquivo) throws SQLException{
 //        dao.add(arquivo);
@@ -86,14 +100,35 @@ public class FileControle implements Serializable{
         //Files.copy(path, output);
     }
 
-    public String salvarArquivo(Part part){
+    public String salvarArquivo(){
         try {
-            Documento doc = GerenciadorArquivos.montarArquivo(part);
+            logger.info("iniciando upload do arquivo");
+            //logger.info("iniciando upload do arquivo"+ this.part.getName());
+            Documento doc = GerenciadorArquivos.montarArquivo(this.part);
+            logger.info("iniciando upload do arquivo 111");
             this.dao.add(doc);
         } catch (IOException | SQLException ex) {
             Logger.getLogger(FileControle.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "home?faces-redirect=true";
+    }
+    
+    public String getMeusDocumentos(){
+        try {
+            this.meusDocumentos = GerenciadorListaArquivos.meusAquivos(this.dao);
+        } catch (SQLException ex) {
+            Logger.getLogger(FileControle.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "meusarquivos?faces-redirect=true";
+    }
+    
+    public String Todosdocumentos(){
+        try {
+            this.documentos = GerenciadorListaArquivos.Aquivos(this.dao);
+        } catch (SQLException ex) {
+            Logger.getLogger(FileControle.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "meusarquivos?faces-redirect=true";
     }
     
 }

@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  *
  * @author recursive
  */
-public class Usuariovalidador {
+public class UsuarioValidador {
     
     public static boolean validarNome(String log){
         if(log==null|| log.isEmpty()) return false;

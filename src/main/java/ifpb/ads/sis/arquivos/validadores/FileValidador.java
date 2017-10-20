@@ -11,8 +11,6 @@ import ifpb.ads.sis.arquivos.daos.FileDao;
 import ifpb.ads.sis.arquivos.daos.IFileDao;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  *
@@ -20,13 +18,6 @@ import java.util.regex.Pattern;
  */
 
 public class FileValidador {
-    
-    public static boolean validarNome(String nome){
-        if(nome==null||nome.isEmpty()) return false;
-        Pattern pattern = Pattern.compile("[a-zA-Z]_!_#_-");
-        Matcher matcher = pattern.matcher(nome);
-        return matcher.matches();
-    }
     
     public static boolean existi(String nome, User dono) throws ClassNotFoundException, SQLException{
         return identificadorFile(nome, dono.getLog()) != 0;

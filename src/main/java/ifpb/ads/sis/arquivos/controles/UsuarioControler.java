@@ -8,7 +8,7 @@ package ifpb.ads.sis.arquivos.controles;
 import ifpb.ads.sis.arquivos.beans.User;
 import ifpb.ads.sis.arquivos.daos.Dao;
 import ifpb.ads.sis.arquivos.daos.IUserDao;
-import ifpb.ads.sis.arquivos.validadores.Usuariovalidador;
+import ifpb.ads.sis.arquivos.validadores.UsuarioValidador;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -87,18 +87,19 @@ public class UsuarioControler implements Serializable{
         else{
             try {
                 System.out.println(log + "email" +email +"senha" +senha);
-                if(Usuariovalidador.existe(log)){
+                if(UsuarioValidador.existe(log)){
                     return "cadastro?faces-redirect=true";
                 }else {
+                    if(UsuarioValidador.validarNome(log)){
                     User novoUsuario = new User();
                     novoUsuario.setLog(log);
                     novoUsuario.setEmail(email);
                     novoUsuario.setPassWord(senha);
                     this.dao.add(novoUsuario);
-                    this.setUser(novoUsuario);
+                    this.user = novoUsuario;
                     logger.info("cadastro feito com susseso");
                     return "home?faces-redirect=true";
-                    
+                    }
                 }
             } catch (ClassNotFoundException | SQLException ex) {
                 logger.info("erro ao inicia cadastro"+log+email+senha);

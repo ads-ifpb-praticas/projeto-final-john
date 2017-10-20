@@ -1,7 +1,7 @@
 /home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/beans/User.java
 /home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/beans/SolicitacaoDocumento.java
-/home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/validadores/Usuariovalidador.java
 /home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/daos/ISolicitacaoDao.java
+/home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/validadores/UsuarioValidador.java
 /home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/daos/Dao.java
 /home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/daos/Conexao.java
 /home/recursive/praticas/projeto-final-john/src/main/java/ifpb/ads/sis/arquivos/daos/IUserDao.java
