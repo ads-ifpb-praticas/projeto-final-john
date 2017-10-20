@@ -16,7 +16,7 @@ public class SolicitacaoDocumento implements Serializable{
     private int id;
     private User remetente;
     private User destinatario;
-    private File arquivo;
+    private Documento arquivo;
 
     public int getId() {
         return id;
@@ -42,11 +42,11 @@ public class SolicitacaoDocumento implements Serializable{
         this.destinatario = destinatario;
     }
 
-    public File getArquivo() {
+    public Documento getArquivo() {
         return arquivo;
     }
 
-    public void setArquivo(File arquivo) {
+    public void setArquivo(Documento arquivo) {
         this.arquivo = arquivo;
     }
 

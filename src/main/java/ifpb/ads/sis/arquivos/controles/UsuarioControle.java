@@ -7,6 +7,7 @@ package ifpb.ads.sis.arquivos.controles;
 
 import ifpb.ads.sis.arquivos.beans.User;
 import ifpb.ads.sis.arquivos.daos.Dao;
+import ifpb.ads.sis.arquivos.daos.IUserDao;
 import ifpb.ads.sis.arquivos.validadores.Usuariovalidador;
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -26,35 +27,35 @@ import javax.inject.Named;
 public class UsuarioControle implements Serializable{
     
     @Inject
-    private Dao<User> dao;
+    private IUserDao dao;
     @Inject
     private User user;
     
-//    public void add(User user) throws SQLException{
-//        dao.add(user);
-//    }
-//    
-//    public void remove(User user) throws SQLException{
-//        dao.remove(user);
-//    }
-//    
-//    public void update(User user) throws SQLException{
-//        dao.update(user);
-//    }
-//    
-//    public User get(User user) throws SQLException{
-//        return dao.get(user.getLog());
-//    }
-//    
-//    public List<User> list() throws SQLException{
-//        return dao.list();
-//    }
+    public void add(User user) throws SQLException{
+        dao.add(user);
+    }
+    
+    public void remove(User user) throws SQLException{
+        dao.remove(user);
+    }
+    
+    public void update(User user) throws SQLException{
+        dao.update(user);
+    }
+    
+    public User get(User user) throws SQLException{
+        return dao.get(user.getLog());
+    }
+    
+    public List<User> list() throws SQLException{
+        return dao.list();
+    }
 
     public Dao<User> getDao() {
         return dao;
     }
 
-    public void setDao(Dao<User> dao) {
+    public void setDao(IUserDao dao) {
         this.dao = dao;
     }
 
@@ -110,6 +111,9 @@ public class UsuarioControle implements Serializable{
         return "home?faces-redirect=true";
     }
     
+    public String criaCadastro(){
+        return "cadastro?faces-redirect=true";
+    }
     
     
 }

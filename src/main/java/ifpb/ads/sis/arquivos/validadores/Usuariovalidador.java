@@ -6,7 +6,7 @@
 package ifpb.ads.sis.arquivos.validadores;
 
 import ifpb.ads.sis.arquivos.beans.User;
-import ifpb.ads.sis.arquivos.daos.Dao;
+import ifpb.ads.sis.arquivos.daos.IUserDao;
 import ifpb.ads.sis.arquivos.daos.UserDao;
 import java.sql.SQLException;
 import java.util.regex.Matcher;
@@ -26,8 +26,8 @@ public class Usuariovalidador {
     }
     
     public static boolean existe(String log) throws ClassNotFoundException, SQLException{
-        Dao dao = new UserDao();
-        User user = (User) dao.get(log);
+        IUserDao dao = new UserDao();
+        User user = dao.get(log);
         return user!=null;
     }
     

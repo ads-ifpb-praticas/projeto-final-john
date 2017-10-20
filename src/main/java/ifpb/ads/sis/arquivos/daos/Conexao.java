@@ -15,9 +15,9 @@ import java.sql.SQLException;
  */
 public class Conexao {
     
-    private static String url = "jdbc:postgresql://localhost:5432/sisplace";
-    private static String usuario = "john";
-    private static String senha = "john";
+    private static String url = "jdbc:postgresql://localhost:5432/sis-arquivos";
+    private static String usuario = "postgres";
+    private static String senha = "postgres";
     
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");

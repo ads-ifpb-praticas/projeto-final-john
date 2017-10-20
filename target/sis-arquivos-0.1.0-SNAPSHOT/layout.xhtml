@@ -3,19 +3,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+      >
 
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>JSP Page</title>
-        <link rel="stylesheet" href="css/index.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="assets/css/index.css"/>
+        <link rel="stylesheet" href="assets/css/main.css"/>
         <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
     </h:head>
     <h:body class="container-fluid">
-        <section id="sidebar">
+        <div id="wrapper">
+            <div id="main" style="padding: 15px;">
+            <!-- Intro -->
+                <section id="intro" class="wrapper style1 fullscreen fade-up">
+                    <div class="inner">
+                        <ui:insert name="contexto">
+
+                        </ui:insert>
+                    </div>
+                </section>
+            </div>
+        
+            <section id="sidebar">
             <!-- Sidebar -->
             <div id="sidebar">
                     <div class="inner">
@@ -33,11 +44,9 @@
                                             <h2>Menu</h2>
                                     </header>
                                     <ul>
-
+                                        <h:form>
                                             <li>
-                                                <h:link value="Home " outcome="home" >
-                                                        <f:param name="username" value="mkyong" />
-                                                </h:link>
+                                                
                                             </li>
                                             <li><a href="generic.html">Criar Lugares/Eventos</a></li>
                                             <li><a href="elements.html">Buscar Lugares/Eventos</a></li>
@@ -45,22 +54,15 @@
                                             <li><a href="#">Meus Lugares/Eventos</a></li>
                                             <li><a href="#">Amigos</a></li>
                                             <li><a href="#">Mensagens</a></li>
+                                        </h:form>
                                     </ul>
                             </nav>
                     </div>
             </div>
         </section>
-        <div id="wrapper">
-
-            <!-- Intro -->
-            <section id="intro" class="wrapper style1 fullscreen fade-up">
-                <div class="inner">
-                    <ui:insert name="contexto">
-
-                    </ui:insert>
-                </div>
-            </section>
-        </div>
+        </div> 
+        
+        
 
     </h:body>
 </html>

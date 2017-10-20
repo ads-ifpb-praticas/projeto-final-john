@@ -6,7 +6,7 @@
 package ifpb.ads.sis.arquivos.controles;
 
 import ifpb.ads.sis.arquivos.beans.SolicitacaoDocumento;
-import ifpb.ads.sis.arquivos.daos.Dao;
+import ifpb.ads.sis.arquivos.daos.ISolicitacaoDao;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
@@ -19,11 +19,11 @@ import javax.inject.Named;
  * @author recursive
  */
 @RequestScoped
-@Named("gerenciadorSolicitacao")
+@Named
 public class SolicitacaoControle implements Serializable{
     
     @Inject
-    private Dao<SolicitacaoDocumento> dao;
+    private ISolicitacaoDao dao;
     @Inject
     private SolicitacaoDocumento soliDocumento;
     
@@ -47,4 +47,21 @@ public class SolicitacaoControle implements Serializable{
     public List<SolicitacaoDocumento> list() throws SQLException{
         return dao.list();
     }
+
+    public ISolicitacaoDao getDao() {
+        return dao;
+    }
+
+    public void setDao(ISolicitacaoDao dao) {
+        this.dao = dao;
+    }
+
+    public SolicitacaoDocumento getSoliDocumento() {
+        return soliDocumento;
+    }
+
+    public void setSoliDocumento(SolicitacaoDocumento soliDocumento) {
+        this.soliDocumento = soliDocumento;
+    }
+    
 }

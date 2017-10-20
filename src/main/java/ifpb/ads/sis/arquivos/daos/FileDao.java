@@ -5,13 +5,12 @@
  */
 package ifpb.ads.sis.arquivos.daos;
 
-import ifpb.ads.sis.arquivos.beans.File;
+import ifpb.ads.sis.arquivos.beans.Documento;
 import ifpb.ads.sis.arquivos.beans.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,16 +20,20 @@ import java.util.logging.Logger;
  *
  * @author john
  */
-public class FileDao implements Dao<File>{
+public class FileDao implements IFileDao{
 
     private final Connection con;
     
     public FileDao()throws ClassNotFoundException, SQLException{
         this.con = Conexao.getConnection();
     }
+
+    public Connection getCon() {
+        return con;
+    }
     
     @Override
-    public void add(File obj)throws SQLException {
+    public void add(Documento obj)throws SQLException {
         PreparedStatement stmt = con.prepareStatement(
             "INSERT INTO file (nome, tipo, arquivo, dono)"
             + " VALUES (?,?,?)");
@@ -45,7 +48,7 @@ public class FileDao implements Dao<File>{
     }
 
     @Override
-    public void remove(File obj)throws SQLException {
+    public void remove(Documento obj)throws SQLException {
         PreparedStatement stmt = con.prepareStatement(
                 "DELETE FROM file WHERE id = ?");
         stmt.setInt(1, obj.getId());
@@ -54,7 +57,7 @@ public class FileDao implements Dao<File>{
     }
 
     @Override
-    public void update(File obj)throws SQLException {
+    public void update(Documento obj)throws SQLException {
         PreparedStatement stmt = con.prepareStatement(
             "UPDATE file SET nome=?, tipo=?, tamanho=?, arquivo=?, dono=? WHERE id=?");
         stmt.setString(1, obj.getNome());
@@ -68,15 +71,15 @@ public class FileDao implements Dao<File>{
     }
 
     @Override
-    public List<File> list()throws SQLException {
+    public List<Documento> list()throws SQLException {
         
-        List<File> files = new ArrayList<>();
+        List<Documento> files = new ArrayList<>();
         PreparedStatement stmt = con.prepareStatement(
                 "SELECT * FROM file");
         ResultSet rs = stmt.executeQuery();
-        File file;
+        Documento file;
         while(rs.next()){
-            file = new File();
+            file = new Documento();
             file.setNome(rs.getString("nome"));
             file.setTipo(rs.getString("tipo"));
             file.setArquivo(rs.getString("arquivo"));
@@ -97,15 +100,15 @@ public class FileDao implements Dao<File>{
     }
 
     @Override
-    public File get(String key)throws SQLException {
-        File file = null;
+    public Documento get(String key)throws SQLException {
+        Documento file = null;
         PreparedStatement stmt = con.prepareStatement(
                 "SELECT * FROM file WHERE id = ?");
         stmt.setString(1, key);
         ResultSet rs = stmt.executeQuery();
 
         if (rs.next()){
-            file = new File();
+            file = new Documento();
             file.setNome(rs.getString("nome"));
             file.setTipo(rs.getString("tipo"));
             file.setArquivo(rs.getString("arquivo"));
@@ -125,5 +128,6 @@ public class FileDao implements Dao<File>{
         return file;
 
     }
+
     
 }

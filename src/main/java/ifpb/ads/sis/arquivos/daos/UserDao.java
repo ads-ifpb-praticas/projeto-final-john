@@ -1,6 +1,6 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template user, choose Tools | Templates
+ * To change this template usuario, choose Tools | Templates
  * and open the template in the editor.
  */
 package ifpb.ads.sis.arquivos.daos;
@@ -12,12 +12,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.Local;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author john
  */
-public class UserDao implements Dao<User>{
+@Stateless
+@Local(IUserDao.class)
+public class UserDao implements IUserDao{
 
     private final Connection con;
     
@@ -25,11 +29,16 @@ public class UserDao implements Dao<User>{
         this.con = Conexao.getConnection();
     }
 
+    public Connection getCon() {
+        return con;
+    }
+
     @Override
     public void add(User obj) throws SQLException {
+    
         PreparedStatement stmt = con.prepareStatement(
-            "INSERT INTO user (log, password, email)"
-            + " VALUES (?,?)");
+            "INSERT INTO usuario (log, password, email)"
+            + " VALUES (?,?,?)");
         stmt.setString(1, obj.getLog());
         stmt.setString(2, obj.getPassWord());
         stmt.setString(3, obj.getEmail());
@@ -41,7 +50,7 @@ public class UserDao implements Dao<User>{
     @Override
     public void remove(User obj) throws SQLException {
         PreparedStatement stmt = con.prepareStatement(
-                "DELETE FROM user WHERE log = ?");
+                "DELETE FROM usuario WHERE log = ?");
         stmt.setString(1, obj.getLog());
         stmt.executeUpdate();
         stmt.close();
@@ -50,7 +59,7 @@ public class UserDao implements Dao<User>{
     @Override
     public void update(User obj) throws SQLException {
         PreparedStatement stmt = con.prepareStatement(
-            "UPDATE user SET password=?, email=? WHERE log=?");
+            "UPDATE usuario SET password=?, email=? WHERE log=?");
         stmt.setString(1, obj.getPassWord());
         stmt.setString(2, obj.getEmail());
         stmt.setString(3, obj.getLog());
@@ -60,37 +69,37 @@ public class UserDao implements Dao<User>{
 
     @Override
     public List<User> list() throws SQLException {
-        List<User> users = new ArrayList<>();
+        List<User> usuarios = new ArrayList<>();
         PreparedStatement stmt = con.prepareStatement(
-                "SELECT * FROM user");
+                "SELECT * FROM usuario");
         ResultSet rs = stmt.executeQuery();
-        User user;
+        User usuario;
         while(rs.next()){
-            user = new User();
-            user.setLog(rs.getString("log"));
-            user.setPassWord(rs.getString("password"));
-            user.setEmail(rs.getString("email"));
-            users.add(user);
+            usuario = new User();
+            usuario.setLog(rs.getString("log"));
+            usuario.setPassWord(rs.getString("password"));
+            usuario.setEmail(rs.getString("email"));
+            usuarios.add(usuario);
         }
-        return users;
+        return usuarios;
     }
 
     @Override
     public User get(String key) throws SQLException {
-        User user = null;
+        User usuario = null;
         PreparedStatement stmt = con.prepareStatement(
-                "SELECT * FROM user WHERE id = ?");
+                "SELECT * FROM usuario WHERE id = ?");
         stmt.setString(1, key);
         ResultSet rs = stmt.executeQuery();
 
         if (rs.next()){
-            user = new User();
-            user.setLog(rs.getString("log"));
-            user.setPassWord(rs.getString("password"));
-            user.setEmail(rs.getString("email"));
+            usuario = new User();
+            usuario.setLog(rs.getString("log"));
+            usuario.setPassWord(rs.getString("password"));
+            usuario.setEmail(rs.getString("email"));
         }
         stmt.close();
-        return user;
+        return usuario;
     }
 
 }

@@ -5,7 +5,7 @@
  */
 package ifpb.ads.sis.arquivos.daos;
 
-import ifpb.ads.sis.arquivos.beans.File;
+import ifpb.ads.sis.arquivos.beans.Documento;
 import ifpb.ads.sis.arquivos.beans.SolicitacaoDocumento;
 import ifpb.ads.sis.arquivos.beans.User;
 import java.sql.Connection;
@@ -20,12 +20,16 @@ import java.util.logging.Logger;
  *
  * @author john
  */
-public class SolicitacaoDao implements Dao<SolicitacaoDocumento>{
+public class SolicitacaoDao implements ISolicitacaoDao{
 
     private final Connection con;
     
     public SolicitacaoDao() throws ClassNotFoundException, SQLException{
         this.con = Conexao.getConnection();
+    }
+
+    public Connection getCon() {
+        return con;
     }
     
     @Override
@@ -89,7 +93,7 @@ public class SolicitacaoDao implements Dao<SolicitacaoDocumento>{
                 Logger.getLogger(SolicitacaoDao.class.getName()).log(Level.SEVERE, null, ex);
             }
             Integer identificador = rs.getInt("arquivo");
-            File arquivo = (File) arquivoDao.get(identificador.toString());
+            Documento arquivo = (Documento) arquivoDao.get(identificador.toString());
             soli.setArquivo(arquivo);
             soli.setId(rs.getInt("id"));
             solicitacaodocumentos.add(soli);
@@ -127,7 +131,7 @@ public class SolicitacaoDao implements Dao<SolicitacaoDocumento>{
                 Logger.getLogger(SolicitacaoDao.class.getName()).log(Level.SEVERE, null, ex);
             }
             Integer identificador = rs.getInt("arquivo");
-            File arquivo = (File) arquivoDao.get(identificador.toString());
+            Documento arquivo = (Documento) arquivoDao.get(identificador.toString());
             soli.setArquivo(arquivo);
             soli.setId(rs.getInt("id"));
         }

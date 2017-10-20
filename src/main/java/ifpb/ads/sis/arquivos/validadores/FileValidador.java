@@ -5,10 +5,11 @@
  */
 package ifpb.ads.sis.arquivos.validadores;
 
-import ifpb.ads.sis.arquivos.beans.File;
+import ifpb.ads.sis.arquivos.beans.Documento;
 import ifpb.ads.sis.arquivos.beans.User;
 import ifpb.ads.sis.arquivos.daos.Dao;
 import ifpb.ads.sis.arquivos.daos.FileDao;
+import ifpb.ads.sis.arquivos.daos.IFileDao;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -34,10 +35,10 @@ public class FileValidador {
     
     
     public static int identificadorFile(String nome, String dono) throws ClassNotFoundException, SQLException{
-        Dao dao = new FileDao();
-        List<File> arquivos = dao.list();
-        for(File file: arquivos){
-            if((file.getNome()==nome) && (file.getDono().getLog() == dono)){
+        IFileDao dao = new FileDao();
+        List<Documento> arquivos = dao.list();
+        for(Documento file: arquivos){
+            if((file.getNome() == null ? nome == null : file.getNome().equals(nome)) && (file.getDono().getLog() == null ? dono == null : file.getDono().getLog().equals(dono))){
                 return file.getId();
             }
         }

@@ -9,27 +9,29 @@
         <ui:define name="contexto">
             <section>
                 <div class="split style1">
-                    <h:message for="loginSuccessful" id="loginSuccessful"/>
-                    <section>
-                        <h1> <h:outputLabel value="usuario"></h:outputLabel></h1>
-                        <h:outputLabel value="Email"></h:outputLabel>
-
-                    </section>
-                    <section>
+                    <article>
+                        
+                        <header id="header">
+                            <h1> <h:outputLabel value="usuario"></h:outputLabel></h1>
+                            <h2><h:outputLabel value="Email"></h:outputLabel></h2>
+                        </header>
+                        <br/>
+                        <br/>
                         <h:form>
-                            <h:inputText value="Nome"></h:inputText>
+                            <h:inputText value="Nome" pt:placehoder></h:inputText>
                             <h:inputSecret value="Senha"></h:inputSecret>
                             <h:inputSecret value="Confirma senha"></h:inputSecret>
-                            <h:commandButton class="btn btn-default" value="Login" action="#{logController.login()}"></h:commandButton>
+                            <h:commandButton class="btn btn-default" value="Atulizar" action="#{logController.login()}"></h:commandButton>
                         </h:form>
-                    </section>
 
+                    </article>
                 </div>
             </section>
             <br/>
             <br/>
-            
-            <h2>Adicione um Documento</h2>
+            <header id="header">
+                <h2>Adicione um Documento</h2>
+            </header>
             <h:form>
                 <section>
                     <div class="split style1">
