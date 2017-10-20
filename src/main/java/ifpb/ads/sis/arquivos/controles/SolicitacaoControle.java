@@ -64,8 +64,8 @@ public class SolicitacaoControle implements Serializable{
         this.soliDocumento = soliDocumento;
     }
     
-    public String enviarSolicitacao(String remetente, String destinatario, int id){
-        
-    }
-    
+//    public String enviarSolicitacao(String remetente, String destinatario, int id){
+//        
+//    }
+//    
 }

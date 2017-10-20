@@ -18,10 +18,9 @@
                         <br/>
                         <br/>
                         <h:form>
-                            <h:inputText value="Nome" pt:placehoder></h:inputText>
-                            <h:inputSecret value="Senha"></h:inputSecret>
-                            <h:inputSecret value="Confirma senha"></h:inputSecret>
-                            <h:commandButton class="btn btn-default" value="Atulizar" action="#{logController.login()}"></h:commandButton>
+                            <h:inputText binding="#{email}" pt:placeholder="email"></h:inputText>
+                            <h:inputSecret binding="#{senha}" pt:placeholder="senha" ></h:inputSecret>
+                            <h:commandButton class="btn btn-default" value="Atulizar" action="#{usuarioControler.atulizar(email.value, senha.value)}"></h:commandButton>
                         </h:form>
 
                     </article>
@@ -36,9 +35,8 @@
                 <section>
                     <div class="split style1">
                         <section>
-                            <h:inputText value=""  pt:placeholder="Nome do Arquivo"></h:inputText>
-                            <h:inputFile value="arquivo" ></h:inputFile>
-                            <h:commandButton class="btn btn-default" value="Salvar" action="#{logController.login()}"/>
+                            <h:inputFile binding="#{part}"  ></h:inputFile>
+                            <h:commandButton class="btn btn-default" value="Salvar" action="#{fileControle.salvarArquivo(part.value)}"/>
                         </section>
                     </div>
                 </section>

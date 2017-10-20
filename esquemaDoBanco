@@ -5,7 +5,7 @@
 	primary key(log)
 	);
 create table arquivo(
-	id int,
+	id serial,
 	nome varchar(30),
 	documento varchar(30),
 	dono varchar(30),
@@ -15,7 +15,7 @@ create table arquivo(
 	foreign key(dono) references usuario(log)
 );
 create table requisicao(
-	id int,
+	id serial,
 	remetente varchar(30),
 	destinatario varchar(30),
 	documento varchar(30),

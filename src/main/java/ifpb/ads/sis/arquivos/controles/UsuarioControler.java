@@ -11,7 +11,6 @@ import ifpb.ads.sis.arquivos.daos.IUserDao;
 import ifpb.ads.sis.arquivos.validadores.Usuariovalidador;
 import java.io.Serializable;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
@@ -24,36 +23,36 @@ import javax.inject.Named;
  */
 @SessionScoped
 @Named
-public class UsuarioControle implements Serializable{
+public class UsuarioControler implements Serializable{
     
     @Inject
     private IUserDao dao;
     @Inject
     private User user;
     
-    public static final Logger logger = Logger.getLogger(UsuarioControle.class);
+    private static final Logger logger = Logger.getLogger("UsuarioControler");
     
-    public void add(User user) throws SQLException{
-        dao.add(user);
-    }
-    
-    public void remove(User user) throws SQLException{
-        dao.remove(user);
-    }
-    
-    public void update(User user) throws SQLException{
-        dao.update(user);
-    }
-    
-    public User get(User user) throws SQLException{
-        return dao.get(user.getLog());
-    }
-    
-    public List<User> list() throws SQLException{
-        return dao.list();
-    }
+//    public void add(User user) throws SQLException{
+//        dao.add(user);
+//    }
+//    
+//    public void remove(User user) throws SQLException{
+//        dao.remove(user);
+//    }
+//    
+//    public void update(User user) throws SQLException{
+//        dao.update(user);
+//    }
+//    
+//    public User get(User user) throws SQLException{
+//        return dao.get(user.getLog());
+//    }
+//    
+//    public List<User> list() throws SQLException{
+//        return dao.list();
+//    }
 
-    public Dao<User> getDao() {
+    public IUserDao getDao() {
         return dao;
     }
 
@@ -77,7 +76,7 @@ public class UsuarioControle implements Serializable{
             return "home?faces-redirect=true";
         } catch (SQLException ex) {
             logger.info("erro ao logar usuario");
-            Logger.getLogger(UsuarioControle.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioControler.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "index?faces-redirect=true";
     }
@@ -87,6 +86,7 @@ public class UsuarioControle implements Serializable{
         if(log==null || email==null || senha==null)return "cadastro?faces-redirect=true";
         else{
             try {
+                System.out.println(log + "email" +email +"senha" +senha);
                 if(Usuariovalidador.existe(log)){
                     return "cadastro?faces-redirect=true";
                 }else {
@@ -101,11 +101,11 @@ public class UsuarioControle implements Serializable{
                     
                 }
             } catch (ClassNotFoundException | SQLException ex) {
-                logger.info("erro ao inicia cadastro");
-                Logger.getLogger(UsuarioControle.class.getName()).log(Level.SEVERE, null, ex);
+                logger.info("erro ao inicia cadastro"+log+email+senha);
+                Logger.getLogger(UsuarioControler.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        logger.info("erro ao inicia cadastro");
+        logger.info("erro ao inicia cadastro"+log+email+senha);
         return "cadastro?faces-redirect=true";
     }
     
@@ -116,7 +116,7 @@ public class UsuarioControle implements Serializable{
         try {
             this.dao.update(user);
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioControle.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioControler.class.getName()).log(Level.SEVERE, null, ex);
         }
         logger.info("atualizacao efetuada com susseso");
         return "home?faces-redirect=true";

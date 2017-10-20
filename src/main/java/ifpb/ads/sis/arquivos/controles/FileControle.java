@@ -33,7 +33,7 @@ public class FileControle implements Serializable{
     @Inject
     private IFileDao dao;
     @Inject
-    private List<Documento> arquivo;
+    private Documento arquivo;
     
 //    public void add(Documento arquivo) throws SQLException{
 //        dao.add(arquivo);
@@ -64,13 +64,14 @@ public class FileControle implements Serializable{
         this.dao = dao;
     }
 
-    public List<Documento> getArquivo() {
+    public Documento getArquivo() {
         return arquivo;
     }
 
-    public void setArquivo(List<Documento> arquivo) {
+    public void setArquivo(Documento arquivo) {
         this.arquivo = arquivo;
     }
+
     
     public void downloadArquivo(int id, String nome, String dono){
         File arquivo = new File("/Users/rponte/minha-foto.png");

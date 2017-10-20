@@ -37,7 +37,7 @@ public class UserDao implements IUserDao{
     public void add(User obj) throws SQLException {
     
         PreparedStatement stmt = con.prepareStatement(
-            "INSERT INTO usuario (log, password, email)"
+            "INSERT INTO usuario (log, senha, email)"
             + " VALUES (?,?,?)");
         stmt.setString(1, obj.getLog());
         stmt.setString(2, obj.getPassWord());
@@ -59,7 +59,7 @@ public class UserDao implements IUserDao{
     @Override
     public void update(User obj) throws SQLException {
         PreparedStatement stmt = con.prepareStatement(
-            "UPDATE usuario SET password=?, email=? WHERE log=?");
+            "UPDATE usuario SET senha=?, email=? WHERE log=?");
         stmt.setString(1, obj.getPassWord());
         stmt.setString(2, obj.getEmail());
         stmt.setString(3, obj.getLog());
@@ -77,7 +77,7 @@ public class UserDao implements IUserDao{
         while(rs.next()){
             usuario = new User();
             usuario.setLog(rs.getString("log"));
-            usuario.setPassWord(rs.getString("password"));
+            usuario.setPassWord(rs.getString("senha"));
             usuario.setEmail(rs.getString("email"));
             usuarios.add(usuario);
         }
@@ -88,14 +88,14 @@ public class UserDao implements IUserDao{
     public User get(String key) throws SQLException {
         User usuario = null;
         PreparedStatement stmt = con.prepareStatement(
-                "SELECT * FROM usuario WHERE id = ?");
+                "SELECT * FROM usuario WHERE log = ?");
         stmt.setString(1, key);
         ResultSet rs = stmt.executeQuery();
 
         if (rs.next()){
             usuario = new User();
             usuario.setLog(rs.getString("log"));
-            usuario.setPassWord(rs.getString("password"));
+            usuario.setPassWord(rs.getString("senha"));
             usuario.setEmail(rs.getString("email"));
         }
         stmt.close();
